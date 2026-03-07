@@ -1,0 +1,61 @@
+*{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth; overscroll-behavior: none;
+    overflow-x: hidden;
+}
+html,body{
+    max-width: 100%; height: 100%;
+}
+
+/*header*/
+header{
+    height: 75px; width: 100%;
+}
+.navbar{
+    position: fixed;
+    top: 15px; left: 75px; right: 75px;
+    z-index: 999;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: aqua;
+    border-radius: 10px;
+}
+.nav-links a{
+    text-decoration: none;
+}
+
+/*section-1*/
+.path{
+    background-color: aqua;
+    margin: 0px 18px 18px;
+}
+.path a{
+    text-decoration: none;
+}
+.box{
+    background-color: aqua;
+    margin: 0px 18px 18px;
+    padding-bottom: 80px;
+}
+.box-content {
+    display: flex;
+}
+.box-content img{
+    margin: 10px 10px 0px;
+}
+.desc_toko{
+    margin: 10px 0px;
+    margin-left: 10px;
+}
+.desc_toko p{
+    margin-bottom: 18px;
+}
+.desc_toko a{
+    text-decoration: none;
+}
