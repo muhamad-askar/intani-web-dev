@@ -24,22 +24,22 @@ body {
 }
 .list1 {
   flex: 4;
-  padding-left: 60px;
+  padding-left: 25px;
 }
 
 .list2 {
   flex: 2;
-  text-align: center;
+  text-align: left;
 }
 
 .list3 {
   flex: 1;
-  text-align: center;
+  text-align: left;
 }
 
 .list4 {
   flex: 3;
-  text-align: center;
+  text-align: left;
 }
 
 
@@ -48,6 +48,7 @@ body {
   background-color: black;
    margin-left: 15px;
   margin-right: 15px;
+  align-items: center;
 }
 .produk1{
   background-color: white;
@@ -66,17 +67,17 @@ body {
 
 .kolom2 {
   flex: 2;
-  text-align: center;
+  text-align: left;
 }
 
 .kolom3 {
   flex: 1;
-  text-align: center;
+  text-align: left;
 }
 
 .kolom4 {
   flex: 3;
-  text-align: center;
+  text-align: left;
 }
 
 .kotak-gambar {
