@@ -1,0 +1,84 @@
+body {
+  background-color: #EBE1D1;
+}
+
+.box {
+  background-color: white;
+  margin :30px 15px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.area-atas {
+  display: flex;
+  justify-content: space-between;
+ align-items: flex-start;
+}
+
+.kiri-atas {
+  display: flex;
+  gap: 20px;
+}
+
+.kanan-atas {
+  display: flex;
+  gap: 50px;
+  font-size: 16px;
+}
+
+.area-tengah{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.pilihan {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.tombol-pilihan {
+  background-color: transparent;
+  border: 1px solid black;
+  padding: 5px 15px;
+  width: 150px;
+  cursor: pointer;
+}
+
+.area-bawah {
+  display: flex;
+  justify-content:space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.kiri-bawah {
+  max-width: 300px;
+}
+
+.kanan-bawah {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  min-width: 250px;
+}
+
+.rincian {
+  display:flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.rincian2 {
+  margin-bottom: 10px;
+}
+
+.tombol-bayar {
+  width: 100%;
+  padding: 10px 0;
+}
