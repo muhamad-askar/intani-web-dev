@@ -1,5 +1,5 @@
 body {
-  background-color: gray ;
+  background-color: #EBE1D1;
 }
 .bar {
   padding: 4px 15px;
@@ -34,13 +34,14 @@ body {
 }
 
 .list3 {
-  flex: 1;
+  flex: 2;
   text-align: left;
 }
 
 .list4 {
-  flex: 3;
-  text-align: left;
+  flex: 2;
+  text-align:left;
+  padding-right: 0;
 }
 
 
@@ -115,13 +116,39 @@ max-width: 350px;
 }
 
 .kolom3 {
-  flex: 1;
+  flex: 2;
   text-align: left;
 }
 
 .kolom4 {
-  flex: 3;
+  flex: 2;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 0;
+  gap: 50px;
+}
+ 
+.tombol {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tombolk {
+  background-color: #8bb6ec;
+  color: white;
+  border: none;
+  padding: 5px 25px;
+  font-size: 14px;
+  width: 120px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.tombolk:hover {
+  background-color: #6a9ce0;
 }
 
 
