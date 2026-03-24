@@ -6,17 +6,13 @@
     <title>Katalog/Alat</title>
     <link rel="stylesheet" href="katalog.css">
     <link rel="stylesheet" href="../navigation.css">
+    <link rel="stylesheet" href="../component/breadcrumb/breadcrumb.css">
 </head>
 <body>
-    <div id="navbar-placeholder"></div>
+    <div id="navbar-placeholder"></div> <!-- navbar -->
+    <div id="pathbar-placeholder"></div> <!-- breadcrumb -->
     <main>
-        <section class="section-1">
-            <div class="path">
-                <a href="../home.html">Home</a>
-                <a href="katalog_alat.html">/ Alat Pertanian</a>
-            </div>
-        </section>
-        <section class="section-2">
+        <section>
             <div class="card-parent">
                 <!-- traktor roda 4 -->
                 <div class="card">
@@ -32,7 +28,7 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">Kendaraan bermesin diesel membalikkan dan mencacah tanah sebelum memulai masa tanam.</p>
                         </div>
-                        <a href="../toko page/barang_page.html?name=Alat Pertanian" class="card-btn">Sewa</a>
+                        <a href="../toko-page/chat_page.html?cat=Alat-Pertanian&name=Traktor-Roda-4&price=500.000&img=traktor4.jpg&desc=Traktor-canggih-buat-lahan-luas" class="card-btn">Sewa</a>
                     </div>
                 </div>
                 <!-- traktor tangan -->
@@ -139,20 +135,17 @@
             </div>
         </section>
     </main>
+    <script src="../component/app-loader.js"></script>
+
     <script>
-        // Pastikan dijalankan setelah DOM siap
         document.addEventListener("DOMContentLoaded", function() {
             fetch('../navigation.html')
-            .then(response => {
-                if (!response.ok) throw new Error('File tidak ditemukan');
-                return response.text();
-            })
+            .then(response => response.text())
             .then(data => {
-                console.log('Data berhasil dimuat!');
                 document.getElementById('navbar-placeholder').innerHTML = data;
-            })
-            .catch(err => console.error('Error:', err));
+            });
         });
     </script>
+</body>
 </body>
 </html>
