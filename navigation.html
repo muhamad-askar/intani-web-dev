@@ -4,47 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="navigation.css" />
+    <link rel="stylesheet" href="/navigation.css" />
   </head>
   <body>
     <header class="navbar-container">
-      <nav class="navbar">
-        <div class="logo">
-          <img src="asset_foto/ikon/logo-intani.png" alt="InTani" />
-        </div>
-        <div class="search-wrapper">
-          <img src="asset_foto/ikon/search.png" alt="Cari " />
-          <input type="text" id="input-search" placeholder="Cari..." />
-        </div>
-        <div class="nav-links">
-          <a href="#">jual-beli ▾</a>
-          <a href="#">sewa ▾</a>
-          <div class="nav-icons">
-            <a href="transaksi page/transaksi.html">
-              <img
-                src="asset_foto/ikon/keranjang.png"
-                alt="Cart"
-                class="icon-img"
-              />
-            </a>
-            <a href="user.page/login.html">
-              <img
-                src="asset_foto/ikon/user.png"
-                alt="Profile"
-                class="icon-img"
-              />
-            </a>
-          </div>
-        </div>
-      </nav>
-    </header>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="/asset_foto/ikon/logo-intani.png" alt="InTani" />
+    </div>
+    <div class="search-wrapper">
+      <img src="/asset_foto/ikon/search.png" alt="Cari " />
+      <input type="text" id="input-search" placeholder="Cari..." />
+    </div>
+    <div class="nav-links">
+      <a href="#">jual-beli ▾</a>
+      <a href="#">sewa ▾</a>
+      <div class="nav-icons">
+        <a href="/transaksi-page/transaksi.html">
+          <img src="/asset_foto/ikon/keranjang.png" alt="Cart" class="icon-img" />
+        </a>
+        <a href="/user-page/login.html">
+          <img src="/asset_foto/ikon/user.png" alt="Profile" class="icon-img" />
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
     <script>
       const inputSearch = document.getElementById("input-search");
-      const searchWrapper = document.querySelector(".search-wrapper");
 
       const dropdownSaran = document.createElement("div");
       dropdownSaran.id = "dropdown-saran";
-      searchWrapper.appendChild(dropdownSaran);
+      document.body.appendChild(dropdownSaran);
 
       const dataSaran = [
         "Benih Tomat Super",
@@ -57,16 +48,24 @@
         "Traktor Mini",
       ];
 
+      function updatePosisiDropdown() {
+        const rect = inputSearch.getBoundingClientRect();
+        dropdownSaran.style.top = rect.bottom + window.scrollY + "px";
+        dropdownSaran.style.left = rect.left + window.scrollX + "px";
+        dropdownSaran.style.width = rect.width + "px";
+      }
+
       inputSearch.addEventListener("input", function () {
         const teks = this.value.toLowerCase();
         dropdownSaran.innerHTML = "";
 
         if (teks.length > 0) {
           const hasilFilter = dataSaran.filter((item) =>
-            item.toLowerCase().includes(teks),
+            item.toLowerCase().startsWith(teks),
           );
 
           if (hasilFilter.length > 0) {
+            updatePosisiDropdown();
             dropdownSaran.style.display = "block";
 
             hasilFilter.forEach((item) => {
@@ -90,8 +89,17 @@
       });
 
       document.addEventListener("click", function (e) {
-        if (!searchWrapper.contains(e.target)) {
+        if (
+          !inputSearch.contains(e.target) &&
+          !dropdownSaran.contains(e.target)
+        ) {
           dropdownSaran.style.display = "none";
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (dropdownSaran.style.display === "block") {
+          updatePosisiDropdown();
         }
       });
     </script>

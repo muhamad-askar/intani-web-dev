@@ -20,8 +20,8 @@
             <div class="store-info">
                 <h2>Nama Store</h2>
                 <div class="store-buttons">
-                    <a href="toko_page.html?name=toko" class="btn-outline">kunjungi toko</a>
-                    <a href="chat.page.html" class="btn-outline">chat toko</a>
+                    <a id="btn-ke-toko" href="#" class="btn-outline">Kunjungi Toko</a>
+                    <a href="chat_page.html" class="btn-outline">chat toko</a>
                 </div>
             </div>
         </section>
@@ -52,14 +52,25 @@
             </div>
         </section>
     </main>
+
+  <script src="/global.js"></script>
 <script src="../component/app-loader.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        // Load Navbar manual (tetep ada)
         fetch('../navigation.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar-placeholder').innerHTML = data;
-        });
+            .then(res => res.text())
+            .then(data => document.getElementById('navbar-placeholder').innerHTML = data);
+
+        // --- FIX: OPER SEMUA DATA KE TOKO ---
+        const p = new URLSearchParams(window.location.search);
+        const btnKeToko = document.getElementById('btn-ke-toko');
+        
+        if (btnKeToko) {
+            // Ambil semua data produk yang ada di URL sekarang, tambahin info toko
+            const dataProduk = p.toString();
+            btnKeToko.href = `toko_page.html?${dataProduk}&toko=Toko-Intani`;
+        }
     });
 </script>
 </body>

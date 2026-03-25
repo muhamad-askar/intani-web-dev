@@ -58,7 +58,7 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">Mesin bajak operasi manual dengan ukuran ringkas untuk menggemburkan lumpur sawah.</p>
                         </div>
-                        <a href="../toko page/barang_page.html?name=Alat Pertanian" class="card-btn">Sewa</a>
+                        <a href="barang_page.html?cat=Alat-Pertanian&name=Traktor-Tangan&price=350.000&img=traktortangan.jpg&desc=Mesin-bajak-operasional-manual" class="card-btn">Sewa</a>
                     </div>
                 </div>
                 <!-- Mesin Tanam Padi -->
@@ -148,8 +148,8 @@
             </div>
         </section>
     </main>
+    <script src="/global.js"></script>
     <script src="../component/app-loader.js"></script>
-
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             fetch('../navigation.html')
@@ -157,6 +157,16 @@
             .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
             });
+        // Taro di script toko_page.html
+        document.addEventListener("DOMContentLoaded", function() {
+            const params = new URLSearchParams(window.location.search);
+            const btnChat = document.querySelector('a[href*="chat_page"]');
+            
+            if (btnChat) {
+                // Bawa semua bekal (cat, name, price, img, toko) ke halaman chat
+                btnChat.href = `chat_page.html?${params.toString()}`;
+            }
+        });
         });
     </script>
 </body>

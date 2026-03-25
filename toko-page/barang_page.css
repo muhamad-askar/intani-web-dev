@@ -20,16 +20,15 @@ body {
 
 
 .card {
-    background: white;
+    background: linear-gradient(135deg, #fff 60%, #edf7e6 100%);
     padding: 20px;
     margin-bottom: 20px;
     display: flex;
     gap: 30px;
     border-radius: 15px;
-    box-shadow: box-shadow: 0 8px 24px rgba(93,168,50,0.12);
+    box-shadow: 0 8px 24px rgba(93,168,50,0.12);
 }
 
-/* Product Section */
 .product-image-placeholder, .store-logo-placeholder {
     width: 200px;
     height: 200px;
@@ -37,7 +36,6 @@ body {
     position: relative;
 }
 
-/* Cross line effect in placeholder */
 .product-image-placeholder::after, .store-logo-placeholder::after {
     content: '';
     position: absolute;
@@ -77,8 +75,8 @@ body {
     color: white;
 }
 
-.btn-primary { background-color: #7fb3d5; }
-.btn-secondary { background-color: #a9cce3; }
+.btn-primary { background-color: #da8e14; }
+.btn-secondary { background-color: #d78a18; }
 
 .store-section {
     border: none; /* Store section tidak pakai border biru */
@@ -89,11 +87,13 @@ body {
     width: 120px;
     padding: 5px;
     margin-top: 5px;
-    background-color: #7fb3d5;
+    background-color: #e3a113;
     color: white;
     border: none;
     cursor: pointer;
     font-size: 11px;
+    border-radius: 5px;
+    padding: 8px 15px;
 }
 
 /* Reviews */

@@ -78,7 +78,7 @@
       <div class="cat-icon">🌾</div>
       <span>Benih</span>
     </a>
-    <a class="cat-card" href="katalog-page/katalog_tanaman.html?cat=Tanaman">
+    <a class="cat-card" href="katalog-page/katalog_panen.html?cat=Panen">
       <div class="cat-icon">🌱</div>
       <span>Tanaman</span>
     </a>
@@ -99,7 +99,7 @@
 
     <div class="nyawit-wrapper">
  
-      <a class="paket-box modal-right" href="/transaksi page/checkout.html">
+      <a class="paket-box modal-right" href="/transaksi-page/checkout.html">
         <div class="img-container"><img src="paket1.jpg" onerror="this.parentElement.innerHTML='🌱'"></div>
         <div class="paket-info">
           <h3>Paket Mula</h3>
@@ -123,7 +123,7 @@
       </a>
  
 
-      <a class="paket-box modal-left" href="/transaksi page/checkout.html">
+      <a class="paket-box modal-left" href="/transaksi-page/checkout.html">
         <div class="img-container"><img src="paket2.jpg" onerror="this.parentElement.innerHTML='🌿'"></div>
         <div class="paket-info">
           <h3>Paket Kembang</h3>
@@ -146,7 +146,7 @@
         </div>
       </a>
  
-      <a class="paket-box modal-right" href="/transaksi page/checkout.html">
+      <a class="paket-box modal-right" href="/transaksi-page/checkout.html">
         <div class="img-container"><img src="paket3.jpg" onerror="this.parentElement.innerHTML='🌳'"></div>
         <div class="paket-info">
           <h3>Paket Usaha</h3>
@@ -214,9 +214,9 @@
  
 <div id="footer-placeholder"></div>
  
+<script src="/global.js"></script>
 <script>
-  fetch('navigation.html').then(r=>r.text()).then(d=>document.getElementById('navbar-placeholder').innerHTML=d);
-  fetch('footer.html').then(r=>r.text()).then(d=>document.getElementById('footer-placeholder').innerHTML=d);
+ 
  
   const slides = document.querySelectorAll('.slide');
   const dots   = document.querySelectorAll('#heroDots .dot');

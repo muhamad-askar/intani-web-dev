@@ -137,21 +137,31 @@
         </section>
     </main>
     <footer><div id="footer-placeholder"></div><footer>
+    <script src="/global.js"></script>
     <script src="../component/app-loader.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('../navigation.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar-placeholder').innerHTML = data;
-            });
-            fetch('../footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Load Navbar & Breadcrumb Placeholder
+        fetch('../navigation.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+            
+            // NAH! Panggil fungsi breadcrumb lo DI SINI
+            // Pastiin di app-loader.js kodenya dibungkus fungsi, misal: initBreadcrumb()
+            if (typeof initBreadcrumb === "function") {
+                initBreadcrumb();
+            }
+        });
+
+        // 2. Load Footer
+        fetch('../footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
         });
     });
-    </script>
+</script>
 </body>
 </body>
 </html>
