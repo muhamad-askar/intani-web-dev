@@ -6,16 +6,13 @@
     <title>Katalog/Pupuk</title>
     <link rel="stylesheet" href="katalog.css">
     <link rel="stylesheet" href="../navigation.css">
+    <link rel="stylesheet" href="../component/breadcrumb/breadcrumb.css">
+    <link rel="stylesheet" href="../footer.css">
 </head>
 <body>
     <div id="navbar-placeholder"></div>
+    <div id="pathbar-placeholder"></div>
     <main>
-        <section class="section-1">
-            <div class="path">
-                <a href="../home.html">Home</a>
-                <a href="katalog_alat.html">/ Pupuk</a>
-            </div>
-        </section>
         <section class="section-2">
             <div class="card-parent">
                 <!-- pupuk urea -->
@@ -32,7 +29,7 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">Mempercepat pertumbuhan daun dan batang, membuat tanaman terlihat lebih hijau dan rimbun.</p>
                         </div>
-                        <a href="../toko page/barang_page.html?name=Pupuk" class="card-btn">Beli</a>
+                        <a href="../toko-page/barang_page.html?cat=Pupuk&name=Pupuk-Urea&price=500.000&img=urea.jpg&desc=Pupuk" class="card-btn">Beli</a>
                     </div>
                 </div>
                 <!-- Pupuk npk -->
@@ -49,7 +46,7 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">Mengandung unsur hara makro yang lengkap untuk menjamin kesehatan tanaman secara menyeluruh.</p>
                         </div>
-                        <a href="../toko page/barang_page.html?name=Pupuk" class="card-btn">Beli</a>
+                        <a href="../toko-page/barang_page.html?cat=Pupuk&name=Pupuk-NPK&price=500.000&img=npk.jpg&desc=Pupuk" class="card-btn">Beli</a>
                     </div>
                 </div>
                 <!-- Pupuk kompos -->
@@ -66,7 +63,7 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">Terbuat dari bahan organik pilihan yang membantu tanah menahan air dan nutrisi lebih lama.</p>
                         </div>
-                        <a href="../toko page/barang_page.html?name=Pupuk" class="card-btn">Beli</a>
+                        <a href="../toko-page/barang_page.html?cat=Pupuk&name=Pupuk-Kompos&price=500.000&img=kompos.jpg&desc=Pupuk" class="card-btn">Beli</a>
                     </div>
                 </div>
                 <!-- Pupuk kcl -->
@@ -83,7 +80,7 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">Sangat penting untuk pengisian buah dan umbi agar hasil panen lebih berbobot dan manis.</p>
                         </div>
-                        <a href="../toko page/barang_page.html?name=Pupuk" class="card-btn">Beli</a>
+                        <a href="../toko-page/barang_page.html?cat=Pupuk&name=Pupuk-KCL&price=500.000&img=kcl.jpg&desc=Pupuk" class="card-btn">Beli</a>
                     </div>
                 </div>
                 <!-- Pupuk organik cair -->
@@ -100,7 +97,7 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">Mengandung mikroba menguntungkan yang merangsang hormon pertumbuhan pada tanaman.</p>
                         </div>
-                        <a href="../toko page/barang_page.html?name=Pupuk" class="card-btn">Beli</a>
+                        <a href="../toko-page/barang_page.html?cat=Pupuk&name=Pupuk-Organik-Cair&price=500.000&img=cair.jpg&desc=Pupuk" class="card-btn">Beli</a>
                     </div>
                 </div>
                 <!-- Pupuk za -->
@@ -117,7 +114,7 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">Sangat cocok untuk tanaman bawang, cabai, dan tebu guna meningkatkan rasa dan daya simpan.</p>
                         </div>
-                        <a href="../toko page/barang_page.html?name=Pupuk" class="card-btn">Beli</a>
+                        <a href="../toko-page/barang_page.html?cat=Pupuk&name=Pupuk-ZA&price=500.000&img=za.jpg&desc=Pupuk" class="card-btn">Beli</a>
                     </div>
                 </div>
                 <!-- Pupuk hayati -->
@@ -134,26 +131,27 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">Membantu tanaman tetap bertahan di kondisi lahan kering dan menyerap fosfor lebih maksimal.</p>
                         </div>
-                        <a href="../toko page/barang_page.html?name=Pupuk" class="card-btn">Beli</a>
+                        <a href="../toko-page/barang_page.html?cat=Pupuk&name=Pupuk-Hayati&price=500.000&img=hayati.jpg&desc=Pupuk" class="card-btn">Beli</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+<footer><div id="footer-placeholder"></div><footer>
+    <script src="../component/app-loader.js"></script>
     <script>
-        // Pastikan dijalankan setelah DOM siap
         document.addEventListener("DOMContentLoaded", function() {
             fetch('../navigation.html')
-            .then(response => {
-                if (!response.ok) throw new Error('File tidak ditemukan');
-                return response.text();
-            })
+            .then(response => response.text())
             .then(data => {
-                console.log('Data berhasil dimuat!');
                 document.getElementById('navbar-placeholder').innerHTML = data;
-            })
-            .catch(err => console.error('Error:', err));
+            });
+            fetch('../footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
         });
+    });
     </script>
 </body>
 </html>

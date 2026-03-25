@@ -1,4 +1,4 @@
-/* Reset & Base Styles */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #f5eee6; /* Warna krem background */
+    background-color: #f5eee6;
     color: #333;
 }
 
@@ -17,7 +17,7 @@ body {
     padding: 0 20px;
 }
 
-/* Layouting */
+
 
 .card {
     background: white;
@@ -25,7 +25,8 @@ body {
     margin-bottom: 20px;
     display: flex;
     gap: 30px;
-    border: 2px solid #3498db; /* Border biru seperti di gambar */
+    border-radius: 15px;
+    box-shadow: box-shadow: 0 8px 24px rgba(93,168,50,0.12);
 }
 
 /* Product Section */

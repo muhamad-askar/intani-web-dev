@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="katalog.css">
     <link rel="stylesheet" href="../navigation.css">
     <link rel="stylesheet" href="../component/breadcrumb/breadcrumb.css">
+    <link rel="stylesheet" href="../footer.css">
 </head>
 <body>
     <div id="navbar-placeholder"></div>
@@ -28,7 +29,7 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">Varietas lokal yang tahan terhadap hawar daun bakteri dan memiliki tekstur nasi yang pulen.</p>
                         </div>
-                        <a href="../toko-page/barang_page.html?cat=benih&name=Benih-Padi&price=500.000&img=padi.jpg&desc=Benih" class="card-btn">Beli</a>
+                        <a href="../toko-page/barang_page.html?cat=Benih&name=Benih-Padi&price=500.000&img=padi.jpg&desc=Benih" class="card-btn">Beli</a>
                     </div>
                 </div>
                 <!-- Benih jagung -->
@@ -45,7 +46,7 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">Varietas hibrida F1 yang dirancang untuk hasil panen maksimal di lahan kering maupun basah.</p>
                         </div>
-                        <a href="../toko page/barang_page.html?name=Benih" class="card-btn">Beli</a>
+                        <a href="../toko-page/barang_page.html?cat=Benih&name=Benih-Jagung&price=500.000&img=jagung.jpg&desc=Benih" class="card-btn">Beli</a>
                     </div>
                 </div>
                 <!-- Benih kedelai -->
@@ -62,7 +63,7 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">Memiliki ukuran biji yang seragam dan kandungan protein tinggi, cocok untuk industri tempe dan tahu.</p>
                         </div>
-                        <a href="../toko page/barang_page.html?name=Benih" class="card-btn">Beli</a>
+                        <a href="../toko-page/barang_page.html?cat=Benih&name=Benih-Kedelai&price=500.000&img=kedelai.jpg&desc=Benih" class="card-btn">Beli</a>
                     </div>
                 </div>
                 <!-- Benih cabai -->
@@ -79,7 +80,7 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">Tanaman tumbuh tegak dan kokoh, menghasilkan buah yang lebat dan tahan simpan lama.</p>
                         </div>
-                        <a href="../toko page/barang_page.html?name=Benih" class="card-btn">Beli</a>
+                        <a href="../toko-page/barang_page.html?cat=Benih&name=Benih-Cabai&price=500.000&img=cabai.jpg&desc=Benih" class="card-btn">Beli</a>
                     </div>
                 </div>
                 <!-- Benih tomat -->
@@ -96,7 +97,7 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">Tomat tipe determinate yang berbuah lebat dengan bentuk buah bulat dan keras.</p>
                         </div>
-                        <a href="../toko page/barang_page.html?name=Benih" class="card-btn">Beli</a>
+                        <a href="../toko-page/barang_page.html?cat=Benih&name=Benih-Tomat&price=500.000&img=tomat.jpg&desc=Benih" class="card-btn">Beli</a>
                     </div>
                 </div>
                 <!-- Benih bawang -->
@@ -113,7 +114,7 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">True Shallot Seed (TSS) yang bebas virus dan menghasilkan umbi bawang merah berkualitas tinggi.</p>
                         </div>
-                        <a href="../toko page/barang_page.html?name=Benih" class="card-btn">Beli</a>
+                        <a href="../toko-page/barang_page.html?cat=Benih&name=Benih-Bawang&price=500.000&img=bawang.jpg&desc=Benih" class="card-btn">Beli</a>
                     </div>
                 </div>
                 <!-- Benih semangka -->
@@ -130,27 +131,27 @@
                             <h3 class="desc-title">Deskripsi</h3>
                             <p class="desc-text">Daya simpan lama dengan kulit buah yang kuat, sangat disukai pasar karena kualitas daging buahnya.</p>
                         </div>
-                        <a href="../toko page/barang_page.html?name=Benih" class="card-btn">Beli</a>
+                        <a href="../toko-page/barang_page.html?cat=Benih&name=Benih-Semangka&price=500.000&img=semangka.jpg&desc=Benih" class="card-btn">Beli</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+   <footer><div id="footer-placeholder"></div><footer>
     <script src="../component/app-loader.js"></script>
     <script>
-        // Pastikan dijalankan setelah DOM siap
         document.addEventListener("DOMContentLoaded", function() {
             fetch('../navigation.html')
-            .then(response => {
-                if (!response.ok) throw new Error('File tidak ditemukan');
-                return response.text();
-            })
+            .then(response => response.text())
             .then(data => {
-                console.log('Data berhasil dimuat!');
                 document.getElementById('navbar-placeholder').innerHTML = data;
-            })
-            .catch(err => console.error('Error:', err));
+            });
+            fetch('../footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
         });
+    });
     </script>
 </body>
 </html>
