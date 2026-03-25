@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async function() {
     
-    // 1. Fungsi sakti buat nungguin file kelar di-download (Async)
+    //nungguin file kelar di-download (Async)
     const loadComp = async (url, id) => {
         try {
             const res = await fetch(url);
@@ -14,16 +14,15 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     const urlParams = new URLSearchParams(window.location.search);
 
-    // --- MISI 1: Load Navbar ---
+    //navbar
     await loadComp('../navigation.html', 'navbar-placeholder');
 
-    // --- MISI 2: Load Breadcrumb ---
+    //breadcrumb
     await loadComp('../component/breadcrumb/breadcrumb.html', 'pathbar-placeholder');
     
-    // Kuncinya di sini: Kita cari ID-nya SETELAH loadComp selesai (pake await)
+    //cari ID-nya SETELAH loadComp selesai (pake await)
     const listContainer = document.getElementById('breadcrumb-list');
     
-    // --- PERBAIKAN LOGIKA BREADCRUMB (MISI 2) ---
     if (listContainer) {
         urlParams.forEach((value, key) => {
             if (['cat', 'name', 'step'].includes(key)) {
@@ -37,12 +36,11 @@ document.addEventListener("DOMContentLoaded", async function() {
                 item.innerText = decodeURIComponent(value).replace(/-/g, ' ');
                 item.className = "breadcrumb-item";
                 
-                // LOGIKA TUJUAN FIX (Anti Nyasar)
+                // LOGIKA TUJUAN FIX
                 if (key === 'cat') {
-                    // Pakai nama file katalog lo yang bener
-                    item.href = "../katalog page/katalog_alat.html"; 
+                    item.href = '../katalog-page/katalog_${value}.html'; 
                 } else if (key === 'name') {
-                    // Link balik ke halaman produk itu sendiri (tanpa parameter step)
+                    // Link balik ke halaman produk itu sendiri
                     const cat = urlParams.get('cat');
                     const img = urlParams.get('img');
                     const price = urlParams.get('price');
@@ -57,18 +55,18 @@ document.addEventListener("DOMContentLoaded", async function() {
         });
     }
 
-    // --- MISI 3: Load Product Detail ---
+    // product container
     // Kita isi datanya TEPAT setelah HTML-nya berhasil ditempel (di dalam .then)
     await loadComp('../component/product-container/product-container.html', 'product-placeholder');
     
-    // Ambil data URL lagi biar seger
+    // Ambil data URL
     const pName = urlParams.get('name');
     const pPrice = urlParams.get('price');
     const pCat = urlParams.get('cat')?.toLowerCase(); // Paksa kecil biar aman
     const pImg = urlParams.get('img');
     const pDesc = urlParams.get('desc');
 
-    // MENGISI DATA (Lakuin ini setelah await loadComp)
+    // MENGISI DATA (setelah await loadComp)
     const nameEl = document.getElementById('main-product-name');
     const priceEl = document.getElementById('main-product-price');
     const descEl = document.getElementById('main-product-desc');
@@ -78,14 +76,11 @@ document.addEventListener("DOMContentLoaded", async function() {
     if (priceEl && pPrice) priceEl.innerText = pPrice; // Gak pake "Rp" lagi biar gak double
     if (descEl && pDesc) descEl.innerText = decodeURIComponent(pDesc).replace(/-/g, ' ');
 
-    // LOGIKA GAMBAR (Jalur Relatif ../)
+    // LOGIKA GAMBAR
     if (imgEl && pImg && pCat) {
         const fullPath = `../asset_foto/${pCat}/${pImg}`;
         imgEl.src = fullPath;
         
-        // Log buat lo cek di Console (F12) kalau masih pecah
-        console.log("Path Gambar:", fullPath);
-
         imgEl.onerror = () => { 
             console.error("File Gak Ada:", fullPath);
             imgEl.src = '../asset_foto/placeholder.jpg'; 
