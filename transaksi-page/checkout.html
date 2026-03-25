@@ -5,37 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Checkout - InTani</title>
     <link rel="stylesheet" href="checkout.css" />
+    <link rel="stylesheet" href="../component/breadcrumb/breadcrumb.css" />
   </head>
   <body>
-
     <div id="navbar-placeholder"></div>
-
-    <div class="bar">
-      <div class="ikon">
-        <img src="../asset_foto/ikon/logo.png" alt="ikon_home" width="24" />
-      </div>
-      <div class="bar2">HOME / CHECKOUT</div>
-    </div>
+    <div id="pathbar-placeholder"></div>
 
     <div class="box">
-      <div class="area-atas">
-        <div class="kiri-atas">
-          <div class="gambar">
-            <img src="../asset_foto/benih/tomat.jpg" alt="Benih Tomat" />
-          </div>
-          <div class="info-produk">
-            <h2>Benih Tomat Super</h2>
-            <p>
-              Benih tomat berkualitas tinggi dengan daya tumbuh 90%, tahan
-              penyakit, dan cocok untuk iklim tropis.
-            </p>
-          </div>
-        </div>
-        <div class="kanan-atas">
-          <span>1 pcs</span>
-          <span>Rp 150.000</span>
-        </div>
-      </div>
+      <div id="ringkasan-produk-container"></div>
 
       <div class="area-tengah">
         <div class="pilihan">
@@ -100,59 +77,152 @@
       </div>
     </div>
 
-
+    <div id="popup-alamat" class="popup-overlay" style="display: none">
+      <div class="popup-box popup-alamat-box">
+        <h3>Ubah Alamat Pengiriman</h3>
+        <textarea id="input-alamat-baru" rows="4"></textarea>
+        <div class="popup-alamat-actions">
+          <button id="btn-batal-alamat" class="btn-batal">Batal</button>
+          <button id="btn-simpan-alamat" class="btn-simpan">Simpan</button>
+        </div>
+      </div>
+    </div>
 
     <script src="/global.js"></script>
+    <script src="../component/breadcrumb/breadcrumb.js"></script>
     <script>
+      const dataBelanja =
+        JSON.parse(localStorage.getItem("keranjangInTani")) || [];
+      const containerProduk = document.getElementById(
+        "ringkasan-produk-container",
+      );
+
+      let hargaAwal = 0;
+
+      if (dataBelanja.length > 0) {
+        dataBelanja.forEach((item) => {
+          const hargaAngka = parseInt(item.totalHarga.replace(/[^0-9]/g, ""));
+          hargaAwal += hargaAngka;
+
+          const produkHTML = `
+            <div class="area-atas" style="margin-bottom: 15px; border-bottom: 1px solid #e8eddf; padding-bottom: 15px;">
+              <div class="kiri-atas">
+                <div class="gambar">
+                  <img src="${item.gambar}" alt="${item.nama}" />
+                </div>
+                <div class="info-produk">
+                  <h2>${item.nama}</h2>
+                  <p>Jumlah Pesanan: <strong>${item.jumlah} pcs</strong></p>
+                </div>
+              </div>
+              <div class="kanan-atas">
+                <span style="font-weight: bold; color: #1e3a0f;">${item.totalHarga}</span>
+              </div>
+            </div>
+          `;
+          containerProduk.innerHTML += produkHTML;
+        });
+      } else {
+        containerProduk.innerHTML =
+          "<p style='padding: 20px; text-align:center;'>Keranjang masih kosong. Ayo belanja dulu!</p>";
+      }
+
       const voucherSelect = document.getElementById("voucher-toko");
       const teksVoucherRincian = document.querySelector(
         ".rincian span:nth-child(2)",
       );
       const teksTotal = document.querySelector(".rincian2 span:nth-child(2)");
-      const hargaAwal = 150000;
+      teksTotal.innerText = "Rp " + hargaAwal.toLocaleString("id-ID");
 
       voucherSelect.addEventListener("change", function () {
         teksVoucherRincian.innerText = this.value;
         let diskon = 0;
+
         if (this.value === "Diskon 10%") {
           diskon = hargaAwal * 0.1;
         } else if (this.value === "Gratis Ongkir") {
           diskon = 0;
         }
-        const totalAkhir = hargaAwal - diskon;
+
+        const totalAkhir = Math.max(0, hargaAwal - diskon);
         teksTotal.innerText = "Rp " + totalAkhir.toLocaleString("id-ID");
       });
 
       const btnUbahAlamat = document.getElementById("btn-ubah-alamat");
       const teksAlamat = document.getElementById("teks-alamat");
 
+      const popupAlamat = document.getElementById("popup-alamat");
+      const inputAlamatBaru = document.getElementById("input-alamat-baru");
+      const btnBatalAlamat = document.getElementById("btn-batal-alamat");
+      const btnSimpanAlamat = document.getElementById("btn-simpan-alamat");
+
       btnUbahAlamat.addEventListener("click", function () {
-        const alamatBaru = prompt(
-          "Masukkan alamat pengiriman baru:",
-          teksAlamat.innerText,
-        );
-        if (alamatBaru !== null && alamatBaru.trim() !== "") {
+        inputAlamatBaru.value = teksAlamat.innerText;
+        popupAlamat.style.display = "flex";
+      });
+
+      btnBatalAlamat.addEventListener("click", function () {
+        popupAlamat.style.display = "none";
+      });
+
+      btnSimpanAlamat.addEventListener("click", function () {
+        const alamatBaru = inputAlamatBaru.value.trim();
+        if (alamatBaru !== "") {
           teksAlamat.innerText = alamatBaru;
+          popupAlamat.style.display = "none";
+          pesanError.style.display = "none";
+        } else {
+          alert("Alamat tidak boleh kosong!");
         }
       });
 
-      const btnBayar = document.getElementById("btn-bayar");
+
+
+     const btnBayar = document.getElementById("btn-bayar");
       const pesanError = document.getElementById("pesan-error");
       const popupSukses = document.getElementById("popup-sukses");
       const noInvoice = document.getElementById("no-invoice");
+      const metodePembayaran = document.getElementById("metode-pembayaran");
+
+      function showToast(pesan) {
+          let toast = document.getElementById("toast-notif");
+          if (!toast) {
+              toast = document.createElement("div");
+              toast.id = "toast-notif";
+              document.body.appendChild(toast);
+          }
+          toast.innerText = pesan;
+          toast.classList.add("show");
+          setTimeout(function() {
+              toast.classList.remove("show");
+          }, 3000);
+      }
 
       btnBayar.addEventListener("click", function () {
-        if (
-          teksAlamat.innerText.trim() === "" ||
-          teksAlamat.innerText === "-"
-        ) {
+        if (dataBelanja.length === 0) {
+          showToast("⚠️ Gagal: Belum ada barang di keranjang!");
+          return;
+        }
+        
+        if (teksAlamat.innerText.trim() === "" || teksAlamat.innerText === "-") {
           pesanError.style.display = "block";
+          showToast("⚠️ Silakan isi alamat pengiriman!");
+          return;
         } else {
           pesanError.style.display = "none";
-          const randomInv = Math.floor(10000 + Math.random() * 90000);
-          noInvoice.innerText = "INV-" + randomInv;
-          popupSukses.style.display = "flex";
         }
+
+        if (metodePembayaran.value === "") {
+          showToast("⚠️ Silakan pilih metode pembayaran!");
+          metodePembayaran.focus();
+          return;
+        }
+
+        const randomInv = Math.floor(10000 + Math.random() * 90000);
+        noInvoice.innerText = "INV-" + randomInv;
+        popupSukses.style.display = "flex";
+        
+        localStorage.removeItem("keranjangInTani");
       });
     </script>
   </body>

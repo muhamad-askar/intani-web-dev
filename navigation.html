@@ -8,100 +8,56 @@
   </head>
   <body>
     <header class="navbar-container">
-  <nav class="navbar">
-    <div class="logo">
-      <img src="/asset_foto/ikon/logo-intani.png" alt="InTani" />
-    </div>
-    <div class="search-wrapper">
-      <img src="/asset_foto/ikon/search.png" alt="Cari " />
-      <input type="text" id="input-search" placeholder="Cari..." />
-    </div>
-    <div class="nav-links">
-      <a href="#">jual-beli ▾</a>
-      <a href="#">sewa ▾</a>
-      <div class="nav-icons">
-        <a href="/transaksi-page/transaksi.html">
-          <img src="/asset_foto/ikon/keranjang.png" alt="Cart" class="icon-img" />
-        </a>
-        <a href="/user-page/login.html">
-          <img src="/asset_foto/ikon/user.png" alt="Profile" class="icon-img" />
-        </a>
-      </div>
-    </div>
-  </nav>
-</header>
-    <script>
-      const inputSearch = document.getElementById("input-search");
+      <nav class="navbar">
+        <div class="logo">
+          <a href="/home.html">
+            <img src="/asset_foto/ikon/logo-intani.png" alt="InTani" />
+          </a>
+        </div>
 
-      const dropdownSaran = document.createElement("div");
-      dropdownSaran.id = "dropdown-saran";
-      document.body.appendChild(dropdownSaran);
+        <div class="search-wrapper">
+          <img src="/asset_foto/ikon/search.png" alt="Cari" />
+          <input type="text" id="input-search" placeholder="Cari..." />
+        </div>
 
-      const dataSaran = [
-        "Benih Tomat Super",
-        "Benih Cabai Rawit",
-        "Pupuk Kompos Organik",
-        "Cangkul Baja",
-        "Pestisida Alami",
-        "Bibit Padi Unggul",
-        "Selang Air Irigasi",
-        "Traktor Mini",
-      ];
+        <div class="nav-links">
+          <div class="dropdown">
+            <a href="#" class="dropbtn">jual-beli ▾</a>
+            <div class="dropdown-content">
+              <a href="/katalog-page/katalog_pupuk.html">Pupuk</a>
+              <a href="/katalog-page/katalog_benih.html">Benih</a>
+              <a href="/katalog-page/katalog_alat.html">Alat Tani</a>
+              <a href="/katalog-page/katalog_panen.html">Hasil Panen</a>
+            </div>
+          </div>
 
-      function updatePosisiDropdown() {
-        const rect = inputSearch.getBoundingClientRect();
-        dropdownSaran.style.top = rect.bottom + window.scrollY + "px";
-        dropdownSaran.style.left = rect.left + window.scrollX + "px";
-        dropdownSaran.style.width = rect.width + "px";
-      }
+          <div class="dropdown">
+            <a href="#" class="dropbtn">sewa ▾</a>
+            <div class="dropdown-content">
+              <a href="/katalog-page/katalog_alat.html">Sewa Traktor</a>
+              <a href="/katalog-page/katalog_alat.html">Sewa Drone</a>
+            </div>
+          </div>
 
-      inputSearch.addEventListener("input", function () {
-        const teks = this.value.toLowerCase();
-        dropdownSaran.innerHTML = "";
+          <div class="nav-icons">
+            <a href="/transaksi-page/keranjang.html">
+              <img
+                src="/asset_foto/ikon/keranjang.png"
+                alt="Cart"
+                class="icon-img"
+              />
+            </a>
 
-        if (teks.length > 0) {
-          const hasilFilter = dataSaran.filter((item) =>
-            item.toLowerCase().startsWith(teks),
-          );
-
-          if (hasilFilter.length > 0) {
-            updatePosisiDropdown();
-            dropdownSaran.style.display = "block";
-
-            hasilFilter.forEach((item) => {
-              const divItem = document.createElement("div");
-              divItem.classList.add("item-saran");
-              divItem.innerText = item;
-
-              divItem.addEventListener("click", function () {
-                inputSearch.value = item;
-                dropdownSaran.style.display = "none";
-              });
-
-              dropdownSaran.appendChild(divItem);
-            });
-          } else {
-            dropdownSaran.style.display = "none";
-          }
-        } else {
-          dropdownSaran.style.display = "none";
-        }
-      });
-
-      document.addEventListener("click", function (e) {
-        if (
-          !inputSearch.contains(e.target) &&
-          !dropdownSaran.contains(e.target)
-        ) {
-          dropdownSaran.style.display = "none";
-        }
-      });
-
-      window.addEventListener("resize", () => {
-        if (dropdownSaran.style.display === "block") {
-          updatePosisiDropdown();
-        }
-      });
-    </script>
+            <a href="/user-page/login.html">
+              <img
+                src="/asset_foto/ikon/user.png"
+                alt="Profile"
+                class="icon-img"
+              />
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
   </body>
 </html>

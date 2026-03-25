@@ -1,131 +1,119 @@
+@font-face {
+  font-family: "DM-sans";
+  src: url(../asset_foto/DMSans.ttf);
+}
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
 }
 
 body {
-    background-color: #f5eee6;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  background-color: #f5eee6;
+  max-width: 100%;
+  height: 100%;
+  font-family: "DM-sans";
+  color: #333;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    width: 100%;
+.chat-header {
+  background: white;
+  margin: 5px 15px 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  gap: 10px;
 }
 
-/* Layout Utama */
-.chat-layout {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    overflow: hidden; /* Mencegah scroll di seluruh halaman */
+#store-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  object-fit: contain;
 }
 
-/* Header Info Toko */
-.card-border-blue {
-    background: white;
-    padding: 15px;
-    border: 2px solid #3498db;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 10px;
+.header-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-
-.avatar-circle {
-    width: 50px;
-    height: 50px;
-    border: 1px solid #333;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
+.row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
-
-.header-info h2 { font-size: 18px; margin-bottom: 5px; }
-.btn-visit {
-    background-color: #7fb3d5;
-    color: white;
-    border: none;
-    padding: 3px 10px;
-    font-size: 11px;
-    cursor: pointer;
+.header-info h1 {
+  font-size: 20px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: #d78a18;
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 8px;
+  text-decoration: none;
 }
 
 /* Window Chat */
 .chat-window {
-    flex: 1;
-    background-color: #bdbdbd; /* Warna abu-abu background chat */
-    padding: 20px;
-    overflow-y: auto; /* Scroll jika pesan banyak */
-}
-
-.chat-date-separator {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.chat-date-separator span {
-    background: white;
-    padding: 2px 15px;
-    font-size: 12px;
-    border: 1px solid #999;
+  flex: 1;
+  background-color: #bdbdbd;
+  padding: 20px;
+  height: 70vh;
+  overflow-y: auto;
+  margin: 5px 15px 0;
+  border-radius: 15px 15px 0 0;
 }
 
 .message-row {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-}
-
-.mini-avatar {
-    width: 30px;
-    height: 30px;
-    background: #777;
-    border-radius: 50%;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
+  display: flex; flex-direction: column;
+  width:100%;
+  gap: 10px;
 }
 
 .bubble {
-    background: white;
-    padding: 10px 15px;
-    border: 1px solid #333;
-    max-width: 70%;
-    font-size: 14px;
+  background: white; border-radius: 10px;
+  padding: 10px 15px; max-width: 70%;
+  font-size: 14px;
+  width: fit-content; align-items: flex-start;
+}
+#chat-product-placeholder{
+  align-self: flex-end;
 }
 
 /* Input Bagian Bawah */
 .chat-input-area {
-    background: white;
-    display: flex;
-    align-items: center;
-    padding: 15px;
+  background: white; border-radius: 0 0 15px 15px;
+  margin: 0 15px 20px;
+  display: flex;
+  align-items: center;
+  padding: 15px;
 }
 
 .chat-input-area input {
-    flex: 1;
-    border: none;
-    font-size: 24px;
-    color: #888;
-    outline: none;
+  flex: 1;
+  border: none;
+  font-size: 20px;
+  outline: none;
 }
 
 .btn-send {
-    background: transparent;
-    border: none;
-    font-size: 30px;
-    cursor: pointer;
-    color: #333;
-    transform: rotate(-15deg); /* Memberi kesan ikon send */
+  background: transparent;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #333;
+  transform: rotate(-15deg); /* Memberi kesan ikon send */
 }

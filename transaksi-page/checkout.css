@@ -265,3 +265,80 @@ body {
 #btn-tutup-popup:hover {
   background-color: #6a9ce0;
 }
+
+.popup-alamat-box {
+  text-align: left;
+  width: 90%;
+  max-width: 400px;
+}
+
+.popup-alamat-box h3 {
+  margin-bottom: 15px;
+  color: #1e3a0f;
+}
+
+#input-alamat-baru {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e8eddf;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  margin-bottom: 20px;
+  resize: none;
+  outline: none;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.popup-alamat-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.btn-batal {
+  background: #ffffff;
+  color: #000000;
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-simpan {
+  background: #8bb6ec;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#toast-notif {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #e74c3c;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 12px;
+    padding: 16px 24px;
+    position: fixed;
+    z-index: 9999;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+    font-size: 15px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.4s ease, bottom 0.4s ease, visibility 0.4s;
+}
+
+#toast-notif.show {
+    visibility: visible;
+    opacity: 1;
+    bottom: 50px;
+}

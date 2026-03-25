@@ -14,28 +14,31 @@
     <div id="pathbar-placeholder"></div> <!-- breadcrumb -->
 
     <main>
-            <section class="chat-header card-border-blue">
+            <section class="chat-header">
                 <img id="store-img" src="../asset_foto/placeholder.jpg" alt="store">
                 <div class="header-info">
-                    <h2 id="chat-nama-toko">Nama Toko</h2>
-                    <a href="#" id="btn-back-toko" class="btn-visit">Kunjungi Toko</a>
+                    <div class="row">
+                        <h1 id="chat-nama-toko">Toko Intani</h1>
+                        <a href="#" id="btn-back-toko" class="btn">Kunjungi Toko</a>
+                    </div>
+                    <p>XX pengikut</p>
                 </div>
             </section>
+
             <section class="chat-window">
-                <div id="chat-product-placeholder"></div>
-                
                 <div class="message-row">
-                    <div class="mini-avatar">👤</div>
                     <div class="bubble">Ada yang bisa kami bantu?</div>
+                    <div id="chat-product-placeholder"></div>
                 </div>
             </section>
+            
             <div class="chat-input-area">
-                <input type="text" placeholder="tulis pesan">
+                <input type="text" placeholder="Tulis pesan...">
                 <button class="btn-send">➤</button>
             </div>
     </main>
 
-    <script src="../component/app-loader.js"></script>
+    <script src="../component/breadcrumb/breadcrumb.js"></script>
     <script src="../component/chat-preview/chat-preview.js"></script>
     <script>
         // Tunggu semua komponen (navbar/breadcrumb) beres dimuat sama app-loader

@@ -11,16 +11,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="transaksi.css" />
+    <link rel="stylesheet" href="../component/breadcrumb/breadcrumb.css" />
   </head>
   <body>
     <div id="navbar-placeholder"></div>
-
-    <div class="bar">
-      <div class="ikon">
-        <img src="../asset_foto/ikon/logo.png" alt="ikon_home" width="24" />
-      </div>
-      <div class="bar2">Home / Keranjang</div>
-    </div>
+    <div id="pathbar-placeholder"></div>
 
     <div class="list">
       <div class="list1">
@@ -73,7 +68,9 @@
             <button class="tombolk">HAPUS</button>
             <button
               class="tombolk"
-              onclick="window.location.href = 'checkout.html'"
+              onclick="
+                window.location.href = 'checkout.html?cart=true&checkout=true'
+              "
             >
               BELI
             </button>
@@ -117,7 +114,9 @@
             <button class="tombolk">HAPUS</button>
             <button
               class="tombolk"
-              onclick="window.location.href = 'checkout.html'"
+              onclick="
+                window.location.href = 'checkout.html?cart=true&checkout=true'
+              "
             >
               BELI
             </button>
@@ -161,7 +160,9 @@
             <button class="tombolk">HAPUS</button>
             <button
               class="tombolk"
-              onclick="window.location.href = 'checkout.html'"
+              onclick="
+                window.location.href = 'checkout.html?cart=true&checkout=true'
+              "
             >
               BELI
             </button>
@@ -205,7 +206,9 @@
             <button class="tombolk">HAPUS</button>
             <button
               class="tombolk"
-              onclick="window.location.href = 'checkout.html'"
+              onclick="
+                window.location.href = 'checkout.html?cart=true&checkout=true'
+              "
             >
               BELI
             </button>
@@ -249,7 +252,9 @@
             <button class="tombolk">HAPUS</button>
             <button
               class="tombolk"
-              onclick="window.location.href = 'checkout.html'"
+              onclick="
+                window.location.href = 'checkout.html?cart=true&checkout=true'
+              "
             >
               BELI
             </button>
@@ -257,60 +262,177 @@
         </div>
       </div>
     </div>
- 
+
+    <div class="rekap-container">
+      <div class="rekap-info">
+        <span>Total Harga (<span id="total-item">0</span> produk):</span>
+        <span class="rekap-total" id="grand-total">Rp 0</span>
+      </div>
+      <button
+        class="btn-checkout-all"
+        id="btn-checkout"
+        onclick="window.location.href = 'checkout.html'"
+        disabled
+      >
+        Checkout Sekarang
+      </button>
+    </div>
 
     <script src="/global.js"></script>
+    <script src="../component/breadcrumb/breadcrumb.js"></script>
     <script>
-      const minusBtns = document.querySelectorAll(".tombol-minus");
-      const plusBtns = document.querySelectorAll(".tombol-plus");
-      const jumlahSpans = document.querySelectorAll(".angka");
-      const totalHargas = document.querySelectorAll(".total-harga");
+      const checkboxPilihSemua = document.getElementById("pilih-semua");
+      const grandTotalEl = document.getElementById("grand-total");
+      const totalItemEl = document.getElementById("total-item");
+      const btnCheckout = document.getElementById("btn-checkout");
 
-      plusBtns.forEach((btn, index) => {
-        btn.addEventListener("click", () => {
-          let jumlah = parseInt(jumlahSpans[index].innerText);
-          jumlah++;
-          jumlahSpans[index].innerText = jumlah;
-          updateHarga(index, jumlah);
-        });
-      });
+      function hitungTotalKeranjang() {
+        let grandTotal = 0;
+        let totalItemCentang = 0;
+        const semuaProduk = document.querySelectorAll(".produk");
 
-      minusBtns.forEach((btn, index) => {
-        btn.addEventListener("click", () => {
-          let jumlah = parseInt(jumlahSpans[index].innerText);
-          if (jumlah > 1) {
-            jumlah--;
-            jumlahSpans[index].innerText = jumlah;
-            updateHarga(index, jumlah);
+        semuaProduk.forEach((item) => {
+          const cb = item.querySelector('.checkbox input[type="checkbox"]');
+          if (cb && cb.checked) {
+            totalItemCentang++;
+            const totalHargaEl = item.querySelector(".total-harga");
+            const hargaSatuan = parseInt(
+              totalHargaEl.getAttribute("data-harga"),
+            );
+            const jumlah = parseInt(item.querySelector(".angka").innerText);
+            grandTotal += hargaSatuan * jumlah;
           }
         });
-      });
 
-      function updateHarga(index, jumlah) {
-        const hargaSatuan = parseInt(
-          totalHargas[index].getAttribute("data-harga"),
-        );
-        const total = hargaSatuan * jumlah;
-        totalHargas[index].innerText = "Rp " + total.toLocaleString("id-ID");
+        if (totalItemEl && grandTotalEl) {
+          totalItemEl.innerText = totalItemCentang;
+          grandTotalEl.innerText = "Rp " + grandTotal.toLocaleString("id-ID");
+          btnCheckout.disabled = totalItemCentang === 0;
+        }
+
+        if (checkboxPilihSemua && semuaProduk.length > 0) {
+          const semuaTercentang = Array.from(
+            document.querySelectorAll(
+              '.produk .checkbox input[type="checkbox"]',
+            ),
+          ).every((c) => c.checked);
+          checkboxPilihSemua.checked = semuaTercentang;
+        }
       }
 
-      const checkboxPilihSemua = document.getElementById("pilih-semua");
-      const checkboxesProduk = document.querySelectorAll(
-        '.produk .checkbox input[type="checkbox"]',
-      );
-      checkboxPilihSemua.addEventListener("change", function () {
-        checkboxesProduk.forEach((checkbox) => {
-          checkbox.checked = this.checked;
-        });
-      });
-      checkboxesProduk.forEach((checkbox) => {
-        checkbox.addEventListener("change", function () {
-          const semuaTercentang = Array.from(checkboxesProduk).every(
-            (c) => c.checked,
+      function updateHargaBaris(item, jumlah) {
+        const totalHargaEl = item.querySelector(".total-harga");
+        const hargaSatuan = parseInt(totalHargaEl.getAttribute("data-harga"));
+        const total = hargaSatuan * jumlah;
+        totalHargaEl.innerText = "Rp " + total.toLocaleString("id-ID");
+        hitungTotalKeranjang();
+      }
+
+      function inisialisasiProduk() {
+        document.querySelectorAll(".produk").forEach((item) => {
+          const btnPlus = item.querySelector(".tombol-plus");
+          const btnMinus = item.querySelector(".tombol-minus");
+          const spanAngka = item.querySelector(".angka");
+          const cb = item.querySelector('.checkbox input[type="checkbox"]');
+
+          const tombols = item.querySelectorAll(".tombolk");
+          const btnHapus = Array.from(tombols).find(
+            (b) => b.innerText.trim() === "HAPUS",
           );
-          checkboxPilihSemua.checked = semuaTercentang;
+          const btnBeli = Array.from(tombols).find(
+            (b) => b.innerText.trim() === "BELI",
+          );
+
+          if (btnPlus) {
+            btnPlus.addEventListener("click", () => {
+              let jumlah = parseInt(spanAngka.innerText);
+              jumlah++;
+              spanAngka.innerText = jumlah;
+              updateHargaBaris(item, jumlah);
+            });
+          }
+
+          if (btnMinus) {
+            btnMinus.addEventListener("click", () => {
+              let jumlah = parseInt(spanAngka.innerText);
+              if (jumlah > 1) {
+                jumlah--;
+                spanAngka.innerText = jumlah;
+                updateHargaBaris(item, jumlah);
+              }
+            });
+          }
+
+          if (cb) {
+            cb.addEventListener("change", hitungTotalKeranjang);
+          }
+
+          if (btnHapus) {
+            btnHapus.addEventListener("click", () => {
+              item.remove();
+              hitungTotalKeranjang();
+            });
+          }
+
+          if (btnBeli) {
+            btnBeli.addEventListener("click", (e) => {
+              e.preventDefault();
+
+              const dataProdukTunggal = [
+                {
+                  nama: item.querySelector(".nama-produk").innerText,
+                  gambar: item.querySelector(".kotak-gambar img").src,
+                  jumlah: item.querySelector(".angka").innerText,
+                  totalHarga: item.querySelector(".total-harga").innerText,
+                },
+              ];
+
+              localStorage.setItem(
+                "keranjangInTani",
+                JSON.stringify(dataProdukTunggal),
+              );
+
+              window.location.href = "checkout.html";
+            });
+          }
         });
-      });
+      }
+
+      if (checkboxPilihSemua) {
+        checkboxPilihSemua.addEventListener("change", function () {
+          document
+            .querySelectorAll('.produk .checkbox input[type="checkbox"]')
+            .forEach((checkbox) => {
+              checkbox.checked = this.checked;
+            });
+          hitungTotalKeranjang();
+        });
+      }
+
+      if (btnCheckout) {
+        btnCheckout.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const dataBelanja = [];
+          document.querySelectorAll(".produk").forEach((item) => {
+            const cb = item.querySelector('.checkbox input[type="checkbox"]');
+            if (cb && cb.checked) {
+              dataBelanja.push({
+                nama: item.querySelector(".nama-produk").innerText,
+                gambar: item.querySelector(".kotak-gambar img").src,
+                jumlah: item.querySelector(".angka").innerText,
+                totalHarga: item.querySelector(".total-harga").innerText,
+              });
+            }
+          });
+
+          localStorage.setItem("keranjangInTani", JSON.stringify(dataBelanja));
+
+          window.location.href = "checkout.html";
+        });
+      }
+
+      inisialisasiProduk();
     </script>
   </body>
 </html>
