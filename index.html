@@ -255,29 +255,26 @@ tombolPaket.forEach(paket => {
  paket.addEventListener('click', function(e) {
 e.preventDefault(); 
 
-const namaPaket = this.querySelector('h3').innerText;
+const tombolPaket = document.querySelectorAll('.paket-box');
 
-
-const imgEl = this.querySelector('.img-container img');
- const gambarPaket = imgEl ? imgEl.src : './asset_foto/ikon/paket.png';
-
-
- const hargaKasar = this.querySelector('.modal-price').innerText;
-
-
- const angkaAwal = parseInt(hargaKasar.replace(/[^0-9]/g, ''));
- const hargaAsli = angkaAwal * 1000;
-const hargaFormat = "Rp " + hargaAsli.toLocaleString("id-ID");
-
-const dataBeliPaket = [{
- nama: namaPaket,
-gambar: gambarPaket,
- jumlah: 1,
- totalHarga: hargaFormat
-}];
-
-localStorage.setItem("keranjangInTani", JSON.stringify(dataBeliPaket));
- window.location.href = this.getAttribute('href'); });
+tombolPaket.forEach(paket => {
+    paket.addEventListener('click', function(e) {
+      e.preventDefault();
+      const namaPaket = this.querySelector('h3').innerText;
+      const gambarPaket = '../asset_foto/ikon/paket.png';
+      const hargaKasar = this.querySelector('.modal-price').innerText; 
+      const angkaAwal = parseInt(hargaKasar.replace(/[^0-9]/g, '')); 
+      const hargaAsli = angkaAwal * 1000; 
+      const hargaFormat = "Rp " + hargaAsli.toLocaleString("id-ID");
+      const dataBeliPaket = [{
+          nama: namaPaket,
+          gambar: gambarPaket,
+          jumlah: 1,
+          totalHarga: hargaFormat
+      }];
+      localStorage.setItem("keranjangInTani", JSON.stringify(dataBeliPaket));
+      const tujuan = this.getAttribute('href'); 
+      window.location.href = tujuan;
 });
 </script>
 </body>
