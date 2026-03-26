@@ -37,6 +37,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  border-radius: 15px;
 }
 
 .area-atas {
@@ -203,7 +204,7 @@ body {
 }
 
 .tombol-bayar {
-  background-color: #8bb6ec;
+  background-color: #e8a618;
   color: #ffffff;
   border: none;
   width: 100%;
@@ -212,11 +213,11 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: 0.2s ease;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 
 .tombol-bayar:hover {
-  background-color: #6a9ce0;
+  background-color: rgb(185, 127, 19);
 }
 
 .popup-overlay {
@@ -349,4 +350,8 @@ body {
   visibility: visible;
   opacity: 1;
   bottom: 50px;
+}
+
+.metode-pembayaran {
+margin-right: 14px;
 }

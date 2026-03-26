@@ -5,31 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About</title>
     <link rel="stylesheet" href="about.css" />
+    <link rel="stylesheet" href="/component/breadcrumb/breadcrumb.css">
   </head>
   <body>
     <header>
       <div id="navbar-placeholder"></div>
+      <div id="pathbar-placeholder"></div>
     </header>
     <section class="about">
       <h1>Tentang Kami</h1>
       <p>
-        Farmayu merupakan website yang dihadirkan untuk membantu meringankan
-        pekerjaan petani di indramayu
+        Farmayu hadir sebagai platform digital yang didedikasikan untuk meringankan langkah para petani di wilayah Indramayu.
       </p>
     </section>
 
     <section class="story">
       <h2>Kisah Kami</h2>
       <p>
-        Farmayu lahir dari hasil keinginan kami untuk membantu mempermudah
-        pekerjaan para petani, kami berfikir apa yang bisa dicapai ketika
-        terciptanya ruang untuk menghubungkan petani-petani yang ada di
-        Indramayu, Ruang dimana para petani dapat membeli pasokan benih, dapat
-        mendapat informasi berupa tips-tips artikel yang dapat membangun pertumbuhan para petani lokal.
+        Farmayu lahir dari semangat untuk membantu perubahan dan diciptakan sebagai ruang kolaborasi dari petani lokal. Kami percaya akan potensi besar yang bisa dicapai ketika teknologi hadir menghubungkan para petani di
+        Indramayu, ruang dimana para petani dapat membeli kebutuhan benih berkualitas, sekaligus sumber informasi edukatif berupa tips-tips artikel yang dapat membangun pertumbuhan petani lokal.
       </p>
       <p>
-        Farmayu berasal dari 2 kata yang berbeda yakni Farm yang berarti
-        pertanian dan Ayu yang merupakan potongan kata dari nama kabupaten
+        <strong>Farmayu</strong> merupakan perpaduan dari dua identitas: Farm yang melambangkan dunia pertanian, dan Ayu yang diambil dari nama kabupaten
         Indramayu.
       </p>
     </section>
@@ -38,17 +35,17 @@
       <h2>Tim Kami</h2>
       <div class="team-grid">
         <div class="member">
-          <img src="foto.jpg" alt="Askar" />
-          <h3>Muhammad Askar Hibatullah</h3>
+          <img src="/asset_foto/ikon/loak.png" alt="Askar" />
+          <h3>Muhamad Askar Hibatullah</h3>
           <p>Anggota</p>
         </div>
         <div class="member">
-          <img src="foto.jpg" alt="Lutfi" />
+          <img src="/asset_foto/ikon/loak.png" alt="Lutfi" />
           <h3>Lutfi Rozhi Anggara</h3>
           <p>Anggota</p>
         </div>
         <div class="member">
-          <img src="foto.jpg" alt="Bimo" />
+          <img src="/asset_foto/ikon/loak.png" alt="Bimo" />
           <h3>Bimo Lanang Saputro</h3>
           <p>Anggota</p>
         </div>
@@ -58,6 +55,7 @@
     <P> &copy; 2026 Farmayu </p>
   </footer>
   <script src="/global.js"></script>
+  <script src="/component/breadcrumb/breadcrumb.js"></script>
   <script>
      document.addEventListener("DOMContentLoaded", function() {
             fetch('/navigation.html')
