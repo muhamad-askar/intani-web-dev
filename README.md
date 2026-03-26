@@ -21,5 +21,5 @@ mendorong potensi
 ## Manfaat
 
 ## Pemilihan Sub-Tema
-
+kami mengusung salah satu subtema yakni ekonomi, dimana website kami ingin meningkatkan perekonomian, mensejahterakan, serta meningkatkan kualitas sektor pertanian di indramayu.
 ## Link-Website
