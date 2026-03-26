@@ -11,8 +11,18 @@ async function loadLayout() {
     if (footerPlaceholder) footerPlaceholder.innerHTML = footerData;
 
     initSearch();
+    updateProfileLink();
   } catch (error) {
     console.error("Gagal memuat layout:", error);
+  }
+}
+
+function updateProfileLink() {
+  const sesiAktif = localStorage.getItem("sesiInTani");
+  const linkProfil = document.querySelector('.nav-icons a[href*="login.html"]');
+
+  if (linkProfil && sesiAktif) {
+    linkProfil.href = "/user-page/user.html";
   }
 }
 
@@ -20,9 +30,12 @@ function initSearch() {
   const inputSearch = document.getElementById("input-search");
   if (!inputSearch) return;
 
-  const dropdownSaran = document.createElement("div");
-  dropdownSaran.id = "dropdown-saran";
-  document.body.appendChild(dropdownSaran);
+  let dropdownSaran = document.getElementById("dropdown-saran");
+  if (!dropdownSaran) {
+    dropdownSaran = document.createElement("div");
+    dropdownSaran.id = "dropdown-saran";
+    document.body.appendChild(dropdownSaran);
+  }
 
   const dataKatalog = [
     { nama: "Benih Tomat Super", link: "/katalog-page/katalog_benih.html" },
@@ -32,7 +45,7 @@ function initSearch() {
     { nama: "Pestisida Alami", link: "/katalog-page/katalog_pupuk.html" },
     { nama: "Bibit Padi Unggul", link: "/katalog-page/katalog_benih.html" },
     { nama: "Selang Air Irigasi", link: "/katalog-page/katalog_alat.html" },
-    { nama: "Traktor Mini", link: "/katalog-page/katalog_alat.html" }
+    { nama: "Traktor Mini", link: "/katalog-page/katalog_alat.html" },
   ];
 
   function updatePosisiDropdown() {
@@ -47,9 +60,10 @@ function initSearch() {
     dropdownSaran.innerHTML = "";
 
     if (teks.length > 0) {
-      const hasilFilter = dataKatalog.filter((item) =>
-        item.nama.toLowerCase().startsWith(teks)
+      const hasilFilter = dataKatalog.filter(
+        (item) => item.nama.toLowerCase().includes(teks), // Menggunakan includes agar pencarian lebih fleksibel
       );
+
       if (hasilFilter.length > 0) {
         updatePosisiDropdown();
         dropdownSaran.style.display = "block";
@@ -57,13 +71,13 @@ function initSearch() {
           const divItem = document.createElement("div");
           divItem.classList.add("item-saran");
           divItem.innerText = item.nama;
-          
+
           divItem.addEventListener("click", function () {
             inputSearch.value = item.nama;
             dropdownSaran.style.display = "none";
-            window.location.href = item.link; 
+            window.location.href = item.link;
           });
-          
+
           dropdownSaran.appendChild(divItem);
         });
       } else {
@@ -78,11 +92,13 @@ function initSearch() {
     if (e.key === "Enter") {
       e.preventDefault();
       const teks = this.value.trim().toLowerCase();
-      
+
       if (teks.length > 0) {
         dropdownSaran.style.display = "none";
-        const produkDitemukan = dataKatalog.find(p => p.nama.toLowerCase() === teks);
-        
+        const produkDitemukan = dataKatalog.find(
+          (p) => p.nama.toLowerCase() === teks,
+        );
+
         if (produkDitemukan) {
           window.location.href = produkDitemukan.link;
         } else {
@@ -104,22 +120,3 @@ function initSearch() {
 }
 
 document.addEventListener("DOMContentLoaded", loadLayout);
-
-<<<<<<< HEAD
-=======
-
->>>>>>> a5ed17d49baddba86bb6827a87a37d27b7d4d7f1
-setTimeout(() => {
-   
-    const linkProfil = document.querySelector('.nav-icons a[href*="login.html"]');
-    
-   
-    const sesiAktif = localStorage.getItem("sesiInTani");
-
-    if (linkProfil && sesiAktif) {
-      
-        linkProfil.href = "/user-page/user.html";
-        
-       
-    }
-}, 500);

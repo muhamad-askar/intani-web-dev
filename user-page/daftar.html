@@ -20,7 +20,6 @@
       
       <div style="position: relative; width: 100%;">
         <input type="password" id="input-password-daftar" placeholder="Password" required style="width: 100%; box-sizing: border-box; padding-right: 40px;">
-        <span id="toggle-password-daftar" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; font-size: 14px; user-select: none;">Lihat</span>
       </div>
 
       <button type="submit" class="tombol-login" style="margin-top: 15px;">Daftar</button>
@@ -39,7 +38,6 @@
         const password = inputs[1].value;
         
         localStorage.setItem("akunInTani", JSON.stringify({ username: username, password: password }));
-        alert("Pendaftaran berhasil! Silakan login.");
         window.location.href = "login.html";
     });
 

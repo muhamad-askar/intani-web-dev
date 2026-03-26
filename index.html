@@ -6,6 +6,7 @@
     <title>InTani - Full Width Version</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="navigation.css">
 </head>
 <body>
 
@@ -216,8 +217,18 @@
  
 <script src="/global.js"></script>
 <script>
- 
- 
+  document.addEventListener("DOMContentLoaded", function() {
+            fetch('../navigation.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+            fetch('../footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+        });
+    });
   const slides = document.querySelectorAll('.slide');
   const dots   = document.querySelectorAll('#heroDots .dot');
   let cur = 0, timer;

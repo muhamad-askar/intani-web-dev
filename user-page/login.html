@@ -4,158 +4,88 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="login.css">
-
   <link rel="stylesheet" href="googlepop-up.css">
-  <title>Document</title>
-
   <title>Login - InTani</title>
-
 </head>
 <body>
   
-<div class="kiri">
+  <div class="kiri">
+    <div> <img src="../asset_foto/ikon/farmayu.png" class="logo"> </div>
+    <div><a class="kembali" href="/index.html">Kembali</a></div>
+  </div>
 
-  <div> <img src="../asset_foto/ikon/farmayu.png" class="logo"> </div>
-  <div><a class="kembali" href="/index.html">Kembali</a> </div>
-</div>
+  <div class="kanan">
+    <form id="form-login">
+      <h2>Login</h2>
+      <input type="text" placeholder="Username" required>
+      
+      <div style="position: relative; width: 100%;">
+        <input type="password" id="input-password" placeholder="Password" required style="width: 100%; box-sizing: border-box; padding-right: 40px;">
+      </div>
 
-<div class="kanan">
-  <form method="post" action="user.html">
-    <h2>Login</h2>
-    <input type="text" placeholder="Username" required>
-    <input type="password" placeholder="Password" required>
-    <input type="submit" value="Login" class="tombol-login">
-    <a id="lupapw" href="">lupa password?</a>
-    <p>----atau----</p>
-    <button type="button" id="btn-google">Google</button>
-    <div class="daftar"> Baru di Farmayu ?<a href="daftar.html">Daftar</a></div>
+      <button type="submit" class="tombol-login" style="margin-top: 15px;">Login</button>
+      <a id="lupapw" href="#">lupa password?</a>
+      <p>----atau----</p>
+      <button type="button" id="btn-google">Google</button>
+      <div class="daftar">Baru di InTani? <a href="daftar.html">Daftar</a></div>
+    </form>
+  </div>
 
-  <div> <img src="../asset_foto/ikon/logo-intani.png" class="logo"> </div>
-  <div style="cursor: pointer;" onclick="window.history.back()">Kembali</div>
-</div>
-
-<div class="kanan">
-  <form id="form-login">
-    <h2>Login</h2>
-    <input type="text" placeholder="Username" required>
-    
-    <div style="position: relative; width: 100%;">
-      <input type="password" id="input-password" placeholder="Password" required style="width: 100%; box-sizing: border-box; padding-right: 40px;">
-      <span id="toggle-password" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; font-size: 18px; user-select: none;">👁️</span>
-    </div>
-
-    <button type="submit" class="tombol-login" style="margin-top: 15px;">Login</button>
-    <a href="#">lupa password?</a>
-    <p>----atau----</p>
-    <button type="button">Google</button>
-    <div class="daftar"> baru di intani ? <a href="daftar.html">daftar</a></div>
-
-  </form>
-</div>
-<div id="overlay-google" class="overlay">
+  <div id="overlay-google" class="overlay" style="display: none;">
     <section class="pop-up-google">
-        <div class="account-chooser-container">
-            <div class="header">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="google-logo">
-            </div>
-
-
-            <div class="account-list">
-                <div class="account-item">
-                    <img src="../asset_foto/placeholder.jpg" alt="Avatar" class="avatar">
-                    <div class="account-info">
-                        <span class="name">natalius karlos</span>
-                        <span class="email">lelelele@gmail.com</span>
-                    </div>
-                </div>
-
-                <div class="account-item">
-                    <img src="../asset_foto/placeholder.jpg" alt="Avatar" class="avatar">
-                    <div class="account-info">
-                        <span class="name">Kino trump</span>
-                        <span class="email">komib@gmail.com</span>
-                    </div>
-                </div>
-
-                <div class="account-item">
-                    <img src="../asset_foto/placeholder.jpg" alt="Avatar" class="avatar">
-                    <div class="account-info">
-                        <span class="name">lutjamin luttanyahu</span>
-                        <span class="email">lutratapan@gmail.com</span>
-                    </div>
-                </div>
-
-                <div class="account-item other-account" id="close-popup">
-                    <div class="account-info">
-                        <span class="name" style="color: #5f6368; text-align: center; width: 100%;">Batal</span>
-                    </div>
-                </div>
-            </div>
+      <div class="account-chooser-container">
+        <div class="header">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="google-logo">
         </div>
+        <div class="account-list">
+          <div class="account-item">
+            <img src="../asset_foto/placeholder.jpg" alt="Avatar" class="avatar">
+            <div class="account-info">
+              <span class="name">natalius karlos</span>
+              <span class="email">lelelele@gmail.com</span>
+            </div>
+          </div>
+          <div class="account-item other-account" id="close-popup">
+            <div class="account-info">
+              <span class="name" style="color: #5f6368; text-align: center; width: 100%;">Batal</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-</div>
-<script>
+  </div>
+
+  <script>
+
+    const formLogin = document.getElementById("form-login");
     const btnGoogle = document.getElementById('btn-google');
     const overlay = document.getElementById('overlay-google');
     const btnClose = document.getElementById('close-popup');
+    const togglePassword = document.getElementById("toggle-password");
+    const inputPassword = document.getElementById("input-password");
+
+
+    formLogin.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const inputs = formLogin.querySelectorAll("input");
+        const username = inputs[0].value;
+        const password = inputs[1].value;
+        const akunTersimpan = JSON.parse(localStorage.getItem("akunInTani"));
+
+        if (akunTersimpan && username === akunTersimpan.username && password === akunTersimpan.password) {
+            localStorage.setItem("sesiInTani", username);
+            window.location.href = "../index.html";
+        } else {
+        }
+    });
+
 
     btnGoogle.onclick = () => overlay.style.display = 'flex';
     btnClose.onclick = () => overlay.style.display = 'none';
-
     window.onclick = (event) => {
         if (event.target == overlay) overlay.style.display = 'none';
     }
-</script>
-
-<script>
-  const formLogin = document.getElementById("form-login");
-  formLogin.addEventListener("submit", function(e) {
-      e.preventDefault();
-      const inputs = formLogin.querySelectorAll("input");
-      const username = inputs[0].value;
-      const password = inputs[1].value;
-      const akunTersimpan = JSON.parse(localStorage.getItem("akunInTani"));
-
-      if (akunTersimpan && username === akunTersimpan.username && password === akunTersimpan.password) {
-          localStorage.setItem("sesiInTani", username);
-          window.location.href = "../home.html";
-      } else {
-          alert("Gagal: Username atau Password salah!");
-      }
-  });
-
- 
-  const togglePassword = document.getElementById("toggle-password");
-  const inputPassword = document.getElementById("input-password");
-  
-  togglePassword.addEventListener("click", function () {
-    if (inputPassword.type === "password") {
-      inputPassword.type = "text";
-      togglePassword.innerText = ""; 
-    } else {
-      inputPassword.type = "password";
-      togglePassword.innerText = ""; 
-    }
-  });
-
-
-
-  formLogin.addEventListener("submit", function(e) {
-      e.preventDefault();
-      const inputs = formLogin.querySelectorAll("input");
-      const username = inputs[0].value;
-      const password = inputs[1].value;
-      const akunTersimpan = JSON.parse(localStorage.getItem("akunInTani"));
-
-      if (akunTersimpan && username === akunTersimpan.username && password === akunTersimpan.password) {
-          localStorage.setItem("sesiInTani", username);
-          window.location.href = "../home.html";
-      } else {
-          alert("Gagal: Username atau Password salah!");
-      }
-  });
-
-</script>
+  </script>
 
 </body>
 </html>
