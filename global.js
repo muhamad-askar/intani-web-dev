@@ -1,6 +1,6 @@
 async function loadLayout() {
   try {
-    const navResponse = await fetch("/navigation.html");
+    const navResponse = await fetch("./navigation.html");
     const navData = await navResponse.text();
     const navPlaceholder = document.getElementById("navbar-placeholder");
     if (navPlaceholder) navPlaceholder.innerHTML = navData;
@@ -22,7 +22,7 @@ function updateProfileLink() {
   const linkProfil = document.querySelector('.nav-icons a[href*="login.html"]');
 
   if (linkProfil && sesiAktif) {
-    linkProfil.href = "/user-page/user.html";
+    linkProfil.href = "./user-page/user.html";
   }
 }
 
@@ -38,9 +38,9 @@ function initSearch() {
   }
 
   const dataKatalog = [
-    { nama: "Benih Tomat Super", link: "/katalog-page/katalog_benih.html" },
-    { nama: "Benih Cabai Rawit", link: "/katalog-page/katalog_benih.html" },
-    { nama: "Pupuk Kompos Organik", link: "/katalog-page/katalog_pupuk.html" },
+    { nama: "Benih Tomat Super", link: "./katalog-page/katalog_benih.html" },
+    { nama: "Benih Cabai Rawit", link: "./katalog-page/katalog_benih.html" },
+    { nama: "Pupuk Kompos Organik", link: "./katalog-page/katalog_pupuk.html" },
     { nama: "Cangkul Baja", link: "/katalog-page/katalog_alat.html" },
     { nama: "Pestisida Alami", link: "/katalog-page/katalog_pupuk.html" },
     { nama: "Bibit Padi Unggul", link: "/katalog-page/katalog_benih.html" },

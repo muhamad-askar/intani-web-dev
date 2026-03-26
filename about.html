@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About</title>
     <link rel="stylesheet" href="about.css" />
-    <link rel="stylesheet" href="/component/breadcrumb/breadcrumb.css">
+    <link rel="stylesheet" href="./component/breadcrumb/breadcrumb.css">
   </head>
   <body>
     <header>
@@ -35,17 +35,17 @@
       <h2>Tim Kami</h2>
       <div class="team-grid">
         <div class="member">
-          <img src="/asset_foto/ikon/loak.png" alt="Askar" />
+          <img src="./asset_foto/ikon/loak.png" alt="Askar" />
           <h3>Muhamad Askar Hibatullah</h3>
           <p>Anggota</p>
         </div>
         <div class="member">
-          <img src="/asset_foto/ikon/loak.png" alt="Lutfi" />
+          <img src="./asset_foto/ikon/loak.png" alt="Lutfi" />
           <h3>Lutfi Rozhi Anggara</h3>
           <p>Anggota</p>
         </div>
         <div class="member">
-          <img src="/asset_foto/ikon/loak.png" alt="Bimo" />
+          <img src="./asset_foto/ikon/loak.png" alt="Bimo" />
           <h3>Bimo Lanang Saputro</h3>
           <p>Anggota</p>
         </div>
@@ -54,11 +54,11 @@
   <footer class="footer">
     <P> &copy; 2026 Farmayu </p>
   </footer>
-  <script src="/global.js"></script>
-  <script src="/component/breadcrumb/breadcrumb.js"></script>
+  <script src="./global.js"></script>
+  <script src="./component/breadcrumb/breadcrumb.js"></script>
   <script>
      document.addEventListener("DOMContentLoaded", function() {
-            fetch('/navigation.html')
+            fetch('navigation.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;

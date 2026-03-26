@@ -17,7 +17,7 @@
     <div class="slides" id="slides">
       <div class="slide active">
         <div class="overlay"></div>
-        <img src="/asset_foto/background/vlad-stawizki-CQbaooHFSWQ-unsplash.jpg" alt="Sawit">
+        <img src="./asset_foto/background/vlad-stawizki-CQbaooHFSWQ-unsplash.jpg" alt="Sawit">
         <div class="hero-text">
           <span class="hero-label">Farmayu</span>
           <h1>Berlangganan<br>Sekarang</h1>
@@ -27,7 +27,7 @@
       </div>
       <div class="slide">
         <div class="overlay"></div>
-        <img src="/asset_foto/background/9c83d1b0bdffe56bf02aa798bfcc0118.jpg" alt="Slide 2">
+        <img src="./asset_foto/background/9c83d1b0bdffe56bf02aa798bfcc0118.jpg" alt="Slide 2">
         <div class="hero-text">
           <span class="hero-label">Farmayu</span>
           <h1>Tumbuh<br>Bersama Kami</h1>
@@ -37,7 +37,7 @@
       </div>
       <div class="slide">
         <div class="overlay"></div>
-        <img src="/asset_foto/background/d609a1ca8043a01335845beffecd30ef.jpg" alt="Slide 3">
+        <img src="./asset_foto/background/d609a1ca8043a01335845beffecd30ef.jpg" alt="Slide 3">
         <div class="hero-text">
           <span class="hero-label">Farmayu</span>
           <h1>Terbaik<br>Untuk Anda</h1>
@@ -47,7 +47,7 @@
       </div>
       <div class="slide">
         <div class="overlay"></div>
-        <img src="/asset_foto/background/065c68eb7a8ead2e35a62918492b79a9.jpg" alt="Slide 4">
+        <img src="./asset_foto/background/065c68eb7a8ead2e35a62918492b79a9.jpg" alt="Slide 4">
         <div class="hero-text">
           <span class="hero-label">Farmayu</span>
           <h1>Berkebun<br>Jadi Mudah</h1>
@@ -100,7 +100,7 @@
 
     <div class="nyawit-wrapper">
  
-      <a class="paket-box modal-right" href="/transaksi-page/checkout.html">
+      <a class="paket-box modal-right" href="./transaksi-page/checkout.html">
         <div class="img-container"><img src="paket1.jpg" onerror="this.parentElement.innerHTML='🌱'"></div>
         <div class="paket-info">
           <h3>Paket Mula</h3>
@@ -124,7 +124,7 @@
       </a>
  
 
-      <a class="paket-box modal-left" href="/transaksi-page/checkout.html">
+      <a class="paket-box modal-left" href="./transaksi-page/checkout.html">
         <div class="img-container"><img src="paket2.jpg" onerror="this.parentElement.innerHTML='🌿'"></div>
         <div class="paket-info">
           <h3>Paket Kembang</h3>
@@ -147,7 +147,7 @@
         </div>
       </a>
  
-      <a class="paket-box modal-right" href="/transaksi-page/checkout.html">
+      <a class="paket-box modal-right" href="./transaksi-page/checkout.html">
         <div class="img-container"><img src="paket3.jpg" onerror="this.parentElement.innerHTML='🌳'"></div>
         <div class="paket-info">
           <h3>Paket Usaha</h3>
@@ -183,7 +183,7 @@
     </div>
     <div class="tips-container">
       <div class="tips-card">
-        <div class="tips-img"><img src="/asset_foto/background/9c83d1b0bdffe56bf02aa798bfcc0118.jpg" alt="tips"></div>
+        <div class="tips-img"><img src="./asset_foto/background/9c83d1b0bdffe56bf02aa798bfcc0118.jpg" alt="tips"></div>
         <div class="tips-content">
           <span class="tips-tag">Pertanian</span>
           <h3>Mengapa Pertanian merupakan hal yang sangat penting?</h3>
@@ -192,7 +192,7 @@
         </div>
       </div>
       <div class="tips-card">
-        <div class="tips-img"><img src="/asset_foto/background/065c68eb7a8ead2e35a62918492b79a9.jpg" alt="tips"></div>
+        <div class="tips-img"><img src="./asset_foto/background/065c68eb7a8ead2e35a62918492b79a9.jpg" alt="tips"></div>
         <div class="tips-content">
           <span class="tips-tag">Nutrisi</span>
           <h3>Yuk, Kenali berbagai jenis nutrisi bagi tanaman kita!</h3>
@@ -201,7 +201,7 @@
         </div>
       </div>
       <div class="tips-card">
-        <div class="tips-img"><img src="/asset_foto/background/d609a1ca8043a01335845beffecd30ef.jpg" alt="tips"></div>
+        <div class="tips-img"><img src="./asset_foto/background/d609a1ca8043a01335845beffecd30ef.jpg" alt="tips"></div>
         <div class="tips-content">
           <span class="tips-tag">Panen</span>
           <h3>Antisipasi gagal panen dan solusi untuk menanganinya</h3>
@@ -215,14 +215,14 @@
  
 <div id="footer-placeholder"></div>
  
-<script src="/global.js"></script>
+<script src="./global.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-            fetch('../navigation.html')
+            fetch('navigation.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
-            });
+            })
             fetch('../footer.html')
             .then(response => response.text())
             .then(data => {
