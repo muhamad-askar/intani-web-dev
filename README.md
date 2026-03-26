@@ -24,4 +24,4 @@ Farmayu adalah platform digital berbasis web yang dirancang menjadi ruang bagi p
   Kami mengusung salah satu sub-tema 'Ekonomi', dimana Farmayu hadir untuk meningkatkan dan mensejahterakan perekonomian serta meningkatkan kualitas sektor pertanian di wilayah Indramayu dan sekitarnya.
   
 ## Link-Website
-
+https://farmayu-web-dev.vercel.app?_vercel_share=bqEvZPi5RqnrwhzBlTEE32sfI2H3nzPd
