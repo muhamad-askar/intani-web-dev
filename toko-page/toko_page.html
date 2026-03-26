@@ -345,13 +345,11 @@
           .then((data) => {
             document.getElementById("navbar-placeholder").innerHTML = data;
           });
-        // Taro di script toko_page.html
         document.addEventListener("DOMContentLoaded", function () {
           const params = new URLSearchParams(window.location.search);
           const btnChat = document.querySelector('a[href*="chat_page"]');
 
           if (btnChat) {
-            // Bawa semua bekal (cat, name, price, img, toko) ke halaman chat
             btnChat.href = `chat_page.html?${params.toString()}`;
           }
         });

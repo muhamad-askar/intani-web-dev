@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   const urlParams = new URLSearchParams(window.location.search);
 
-  //komponen
+
   await loadComp("../navigation.html", "navbar-placeholder");
   await loadComp(
     "../component/breadcrumb/breadcrumb.html",
@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (!listContainer) return;
   listContainer.innerHTML = "";
 
-  //path sub-folder
-  const path = window.location.pathname; //cek
+
+  const path = window.location.pathname;
   const isSub =
     path.includes("/katalog-page/") ||
     path.includes("/toko-page/") ||
@@ -34,21 +34,18 @@ document.addEventListener("DOMContentLoaded", async function () {
     path.includes("/chat-page/");
   const prefix = isSub ? "../" : "";
 
-  //ikon
   const logoIkon = document.createElement("img");
   logoIkon.id = "ikon";
   logoIkon.src = `${prefix}asset_foto/ikon/logo.png`;
   logoIkon.alt = "home-icon";
   listContainer.appendChild(logoIkon);
 
-  //home
   const homeItem = document.createElement("a");
   homeItem.innerText = "Home";
   homeItem.href = `${prefix}index.html`;
   homeItem.className = "breadcrumb-item";
   listContainer.appendChild(homeItem);
 
-  //rute
   let urutanTampil = ["cat", "name"];
   if (urlParams.has("cart")) urutanTampil.push("cart");
   if (urlParams.has("checkout")) urutanTampil.push("checkout");
@@ -64,7 +61,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     else if (key === "chat" && !value) value = "Chat";
 
     if (value) {
-      //jarak
       const sep = document.createElement("span");
       sep.innerText = " / ";
       listContainer.appendChild(sep);
@@ -75,7 +71,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       const currentData = new URLSearchParams(window.location.search);
 
-      //href key
+
       if (key === "cat")
         item.href = `${prefix}katalog-page/katalog_${value.toLowerCase()}.html?cat=${value}`;
       else if (key === "cart")
@@ -95,7 +91,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       else if (key === "chat")
         item.href = `chat_page.html?${currentData.toString()}`;
 
-      //link ujung mati
+
       const paramsPresent = urutanTampil.filter(
         (k) => urlParams.has(k) || k === "chat",
       );

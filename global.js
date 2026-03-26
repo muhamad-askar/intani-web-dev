@@ -61,7 +61,7 @@ function initSearch() {
 
     if (teks.length > 0) {
       const hasilFilter = dataKatalog.filter(
-        (item) => item.nama.toLowerCase().includes(teks), // Menggunakan includes agar pencarian lebih fleksibel
+        (item) => item.nama.toLowerCase().includes(teks),
       );
 
       if (hasilFilter.length > 0) {

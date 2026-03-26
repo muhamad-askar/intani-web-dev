@@ -21,7 +21,6 @@ body {
     padding: 20px; gap: 30px;
 }
 
-/* pp store */
 #store-img{
     width: 120px; height: 120px;
     border-radius: 100%;
@@ -34,7 +33,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* Buttons */
+
 .store-button{
     display: flex; gap: 10px;
 }
@@ -83,7 +82,7 @@ body {
     color: #ffd900;
     margin-left: 10px;
 }
-/* Input Bagian Bawah */
+
 .chat-input-area {
     background: white;
     padding: 50px 5px 5px; gap: 30px;

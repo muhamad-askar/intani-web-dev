@@ -10,10 +10,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const urlParams = new URLSearchParams(window.location.search);
 
-    //container produk
     await loadComp("../component/product-container/product-container.html", "product-placeholder");
 
-    //data URL
+
     const data = {
         name: urlParams.get("name"),
         price: urlParams.get("price"),

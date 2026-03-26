@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const chatPlaceholder = document.getElementById('chat-product-placeholder');
     const urlParams = new URLSearchParams(window.location.search);
 
-    //data url
+
     const pName = urlParams.get('name');
     const pImg = urlParams.get('img');
 
