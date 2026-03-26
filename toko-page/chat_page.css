@@ -59,6 +59,12 @@ body {
   padding: 5px 8px;
   text-decoration: none;
 }
+.btn:hover{
+    background-color: #ffb031;
+}
+.btn:active{
+    background-color: #b57414;
+}
 
 .chat-window {
   background-color: #bdbdbd;
