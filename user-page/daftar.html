@@ -8,98 +8,41 @@
 </head>
 <body>
   
-<div class="kiri">
-<<<<<<< HEAD
-  <div> <img src="../asset_foto/ikon/farmayu.png" class="logo"> </div>
-  <div><a href="login.html" class="kembali">Kembali</a></div>
-=======
-  <div> <img src="../asset_foto/ikon/logo-intani.png" class="logo"> </div>
-  <div style="cursor: pointer;" onclick="window.history.back()">Kembali</div>
->>>>>>> a5ed17d49baddba86bb6827a87a37d27b7d4d7f1
-</div>
+  <div class="kiri">
+    <div> <img src="../asset_foto/ikon/farmayu.png" class="logo"> </div>
+    <div><a href="login.html" class="kembali">Kembali</a></div>
+  </div>
 
-<div class="kanan">
-  <form id="form-daftar">
-    <h2>Daftar</h2>
-    <input type="text" placeholder="Username" required>
-<<<<<<< HEAD
-    <input type="password" placeholder="Password" required>
-    <button type="submit" class="tombol-login">Daftar</button>
-=======
-    
-    <div style="position: relative; width: 100%;">
-      <input type="password" id="input-password-daftar" placeholder="Password" required style="width: 100%; box-sizing: border-box; padding-right: 40px;">
-      <span id="toggle-password-daftar" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; font-size: 18px; user-select: none;">👁️</span>
-    </div>
-
-    <button type="submit" class="tombol-login" style="margin-top: 15px;">Daftar</button>
->>>>>>> a5ed17d49baddba86bb6827a87a37d27b7d4d7f1
-  </form>
-</div>
-<script>
-
-<<<<<<< HEAD
-  const formDaftar = document.getElementById("form-daftar");
-
-  formDaftar.addEventListener("submit", function(e) {
-
-      e.preventDefault();
-
-      const inputs = formDaftar.querySelectorAll("input");
-
-      const username = inputs[0].value;
-
-      const password = inputs[1].value;
-
-
-      localStorage.setItem("akunInTani", JSON.stringify({ username: username, password: password }));
-
-      window.location.href = "login.html";
-
-  });</script>
-=======
-
-</body>
-</html>
-<script>
-  const formDaftar = document.getElementById("form-daftar");
-  formDaftar.addEventListener("submit", function(e) {
-      e.preventDefault();
-      const inputs = formDaftar.querySelectorAll("input");
-      const username = inputs[0].value;
-      const password = inputs[1].value;
+  <div class="kanan">
+    <form id="form-daftar">
+      <h2>Daftar</h2>
+      <input type="text" placeholder="Username" required>
       
-      localStorage.setItem("akunInTani", JSON.stringify({ username: username, password: password }));
-      alert("Pendaftaran berhasil! Silakan login.");
-      window.location.href = "login.html";
-  });
+      <div style="position: relative; width: 100%;">
+        <input type="password" id="input-password-daftar" placeholder="Password" required style="width: 100%; box-sizing: border-box; padding-right: 40px;">
+        <span id="toggle-password-daftar" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; font-size: 14px; user-select: none;">Lihat</span>
+      </div>
 
-  const toggleDaftar = document.getElementById("toggle-password-daftar");
-  const inputDaftar = document.getElementById("input-password-daftar");
-  
-  toggleDaftar.addEventListener("click", function () {
-    if (inputDaftar.type === "password") {
-      inputDaftar.type = "text";
-      toggleDaftar.innerText = "lihat";
-    } else {
-      inputDaftar.type = "password";
-      toggleDaftar.innerText = "lihat";
-    }
-  });
+      <button type="submit" class="tombol-login" style="margin-top: 15px;">Daftar</button>
+    </form>
+  </div>
 
+  <script>
+    const formDaftar = document.getElementById("form-daftar");
+    const toggleDaftar = document.getElementById("toggle-password-daftar");
+    const inputDaftar = document.getElementById("input-password-daftar");
 
-  formDaftar.addEventListener("submit", function(e) {
-      e.preventDefault();
-      const inputs = formDaftar.querySelectorAll("input");
-      const username = inputs[0].value;
-      const password = inputs[1].value;
-      
-      localStorage.setItem("akunInTani", JSON.stringify({ username: username, password: password }));
-      alert("Pendaftaran berhasil! Silakan login.");
-      window.location.href = "login.html";
-  });
-</script>
+    formDaftar.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const inputs = formDaftar.querySelectorAll("input");
+        const username = inputs[0].value;
+        const password = inputs[1].value;
+        
+        localStorage.setItem("akunInTani", JSON.stringify({ username: username, password: password }));
+        alert("Pendaftaran berhasil! Silakan login.");
+        window.location.href = "login.html";
+    });
 
->>>>>>> a5ed17d49baddba86bb6827a87a37d27b7d4d7f1
+  </script>
 </body>
 </html>
