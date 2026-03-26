@@ -16,8 +16,10 @@ Politeknik Negeri Indramayu
   Farmayu dibentuk untuk mendorong kolaborasi antara petani lokal dengan kehadiran teknologi demi membangun potensi pertumbuhan pertanian terkhususnya wilayah Indramayu dan sekitarnya.
 
 ## Manfaat
+  Farmayu dapat dijadikan ruang kolaborasi dan landasan untuk mendukung pertumbuhan pertanian di wilayah Indramayu. Hadir dengan berbagai fitur yang mendampingi perjalanan para petani, diharapkan Farmayu dapat mendorong perkembangan pertanian lebih jauh.
 
 ## Pemilihan Sub-Tema
-kami mengusung salah satu subtema yakni ekonomi, dimana website kami ingin meningkatkan perekonomian, mensejahterakan, serta meningkatkan kualitas sektor pertanian di indramayu.
+  Kami mengusung salah satu sub-tema 'Ekonomi', dimana Farmayu hadir untuk meningkatkan dan mensejahterakan perekonomian serta meningkatkan kualitas sektor pertanian di wilayah Indramayu dan sekitarnya.
+  
 ## Link-Website
 
